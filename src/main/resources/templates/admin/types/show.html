@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>All services</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/newStyling.css}" rel="stylesheet" />
+    <link th:href="@{/DataTables/datatables.css}" rel="stylesheet">
+
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+
+<div class="table-responsive">
+    <table id="myTable" class="display table table-dark table-striped table-bordered table-hover table-sm p-1 mt-3 ">
+        <br>
+        <caption>
+            <button type="button" class="btn btn-info btn-sm float-left"  data-toggle="modal" data-target="#modalAddNew">
+                <a th:href="@{/admin/types/new}" style="color: white">+ Add new service </a>
+            </button>
+        </caption>
+        <thead>
+        <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 40%">DESCRIPTION</th>
+            <th style="width: 10%">DURATION(mins)</th>
+            <th style="width: 10%">PRICE(dollars)</th>
+            <th style="width: 10%">EDIT</th>
+            <th style="width: 10%">DELETE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form >
+            <tr>
+                <td class="tableRefs" th:href="@{/admin/types/{id}(id=${type.getId()})}" th:text="${type.getId()}">user</td>
+                <td><a class="tableRefs" th:href="@{/admin/types/{id}(id=${type.getId()})}" th:text="${type.getDescription()}">user</a></td>
+                <td><a class="tableRefs" th:href="@{/admin/types/{id}(id=${type.getId()})}" th:text="${type.getDuration()}">user</a></td>
+                <td><form><a class="tableRefs" th:href="@{/admin/types/{id}(id=${type.getId()})}" th:text="${type.getPrice()}">user</a></form></td>
+                <td>
+                    <form th:action="@{/admin/types/{id}/edit(id=${type.getId()})}">
+                        <input class="input" type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/admin/types/{id}(id=${type.getId()})}">
+                        <input class="input" type="submit" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
+<br/>
+<hr/>
+
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/DataTables/datatables.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+</script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</html>

@@ -1,0 +1,91 @@
+body {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: rgba(242, 134, 55, 0.86);
+    color: white;
+}
+
+div.formType {
+    background-color: #f2f2f2;
+    margin-left: 700px;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+
+.tableIndexParams {
+    top: 50px;
+}
+
+.tableparams {
+    top: auto;
+    margin: 0px auto;
+}
+
+input[type=submit] {
+    width: 80px;
+    height: 30px;
+    background-color: rgba(242, 134, 55, 0.86);
+    color: white;
+    padding: 5px 18px;
+    margin: 8px auto;
+    border: none;
+    cursor: pointer;
+    float: left;
+}
+
+.inputClass[type=submit] {
+    width: 80px;
+    height: 30px;
+    background-color: rgba(242, 134, 55, 0.86);
+    color: white;
+    padding: 2px 18px;
+    margin: -15px auto;
+    border: none;
+    cursor: pointer;
+    float: left;
+}
+
+.backButton[type=button] {
+    width: 80px;
+    height: 30px;
+    background-color: rgba(242, 134, 55, 0.86);
+    color: white;
+    padding: 2px 14px;
+    margin: -15px auto;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+div {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+form { padding: 20px; width: 400px; display: block; background: #FAFAFA; margin: 0 auto;}
+
+.formType2 { width: 150px; display: block; background: #FAFAFA; margin: 0 auto;}

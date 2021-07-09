@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Denied</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/forming.css}" rel="stylesheet" />
+    <link th:href="@{/css/buttons.css}" rel="stylesheet" />
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+<div class="formType" style="width: 450px">
+
+    <h4>You need admin rights to enter this page, sorry.</h4>
+</div>
+
+
+</body>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+</html>

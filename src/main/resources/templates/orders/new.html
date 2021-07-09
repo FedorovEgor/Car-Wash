@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New order</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/forming.css}" rel="stylesheet" />
+    <link th:href="@{/css/buttons.css}" rel="stylesheet" />
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+<div class="formType" style="width: 450px">
+
+    <form th:method="POST" th:action="@{/orders}" th:object="${order}">
+
+
+        <label for="OrderType">
+            Select teacher: </label>
+        <select class="form-control" style="width: 200px" th:field="*{orderType.id}" id="OrderType" name="OrderType">
+            <option value="0">Select service</option>
+            <option th:each="type: ${types}"
+                    th:value="${type.id}"
+                    th:text="${type.description} + ' - ' + ${type.price} + '$'">
+            </option>
+        </select> <br>
+
+
+        <label for="date">
+            Select date: </label>
+        <input class="form-control" style="width: 200px" type="date" th:field="*{date}" id="date" name="date"/>
+        <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}">ERROR NAME</div>
+        <br>
+        <br>
+
+
+
+        <input class="inputType" type="submit" value="Create"/>
+    </form>
+</div>
+
+
+</body>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+</html>

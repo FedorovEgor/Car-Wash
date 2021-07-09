@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>All orders</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/newStyling.css}" rel="stylesheet" />
+    <link th:href="@{/DataTables/datatables.css}" rel="stylesheet">
+
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+
+<div class="table-responsive">
+    <table id="myTable" class="display table table-dark table-striped table-bordered table-hover table-sm p-1 mt-3 ">
+        <br>
+        <caption>
+            <button type="button" class="btn btn-info btn-sm float-left"  data-toggle="modal" data-target="#modalAddNew">
+                <a th:href="@{/orders/new}" style="color: white">+ Place another order </a>
+            </button>
+        </caption>
+        <thead>
+        <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 20%">DATE</th>
+            <th style="width: 10%">SERVICE</th>
+            <th style="width: 10%">PRICE(dollars)</th>
+            <th style="width: 10%">DURATION(minutes)</th>
+            <th style="width: 10%">WAIT TIME(hours)</th>
+            <th style="width: 10%">CLIENT</th>
+            <th style="width: 10%">EDIT</th>
+            <th style="width: 10%">DELETE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form th:each="order : ${orders}">
+            <tr>
+                <td class="tableRefs" th:href="@{/orders/{id}(id=${order.getId()})}" th:text="${order.getId()}">user</td>
+                <td><a class="tableRefs"  th:text="${order.getDate()}">user</a></td>
+                <td><a class="tableRefs"  th:text="${order.getOrderType().getDescription()}">user</a></td>
+                <td><a class="tableRefs"  th:text="${order.getOrderType().getPrice()}">user</a></td>
+                <td><a class="tableRefs"  th:text="${order.getOrderType().getDuration()}">user</a></td>
+                <td><a class="tableRefs"  th:text="${order.getDateDiff(order.getDate())}">user</a></td>
+                <td><form><a class="tableRefs"  th:text="${order.getUser().getUsername()}">user</a></form></td>
+
+                <td>
+                    <form th:action="@{/orders/{id}/edit(id=${order.getId()})}">
+                        <input class="input" type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/orders/{id}(id=${order.getId()})}">
+                        <input class="input" type="submit" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
+<br/>
+<hr/>
+
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/DataTables/datatables.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+</script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</html>

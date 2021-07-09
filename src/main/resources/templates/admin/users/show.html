@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>User</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/newStyling.css}" rel="stylesheet" />
+    <link th:href="@{/DataTables/datatables.css}" rel="stylesheet">
+
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+
+<div class="table-responsive">
+    <table id="myTable" class="display table table-dark table-striped table-bordered table-hover table-sm p-1 mt-3 ">
+
+        <thead>
+        <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 30%">USER NAME</th>
+            <th style="width: 30%">ROLE</th>
+            <th style="width: 10%">EDIT</th>
+            <th style="width: 10%">DELETE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form>
+            <tr>
+                <td class="tableRefs" th:href="@{/admin/users/{id}(id=${user.getId()})}" th:text="${user.getId()}">user</td>
+                <td><a class="tableRefs" th:href="@{/admin/users/{id}(id=${user.getId()})}" th:text="${user.getUsername()}">user</a></td>
+                <td><a class="tableRefs" th:href="@{/admin/users/{id}(id=${user.getId()})}" th:text="${user.getRole().getName()}">user</a></td>
+
+                <td>
+                    <form th:action="@{/admin/users/{id}/edit(id=${user.getId()})}">
+                        <input class="input" type="submit" value="Edit">
+                    </form>
+                </td>
+
+                <td>
+                    <form th:method="DELETE" th:action="@{/admin/users/{id}(id=${user.getId()})}">
+                        <input class="input" type="submit" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
+<br/>
+<hr/>
+
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/DataTables/datatables.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+</script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</html>

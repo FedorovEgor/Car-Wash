@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/forming.css}" rel="stylesheet" />
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+
+<form  th:method="PATCH" th:action="@{/admin/users/{id}(id=${user.getId()})}" th:object="${user}">
+
+    <p><label for="role" >Select role:</label></p>
+    <p>
+        <select class="form-control" style="width: 200px" th:field="*{role.id}" id="role" name="role">
+            <option value="0">Select role</option>
+            <option th:each="role: ${roles}"
+                    th:value="${role.id}"
+                    th:text="${role.name}" >
+            </option>
+        </select>
+    </p>
+    <br>
+    <input class="inputClass" type="submit" value="Update"/>
+    <input class="backButton" type="button" value="Cancel" onclick="history.back()">
+</form>
+
+
+</body>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+</html>

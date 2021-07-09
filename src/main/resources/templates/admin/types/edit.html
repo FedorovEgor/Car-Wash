@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit service</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/forming.css}" rel="stylesheet" />
+</head>
+<body>
+<a th:insert="navBar :: bar">
+</a>
+
+<form  th:method="PATCH" th:action="@{/admin/types/{id}(id=${type.getId()})}" th:object="${type}">
+
+    <label for="description">Enter description: </label><br>
+    <input type="text" th:field="*{description}" id="description"/>
+    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">ERROR NAME</div><br><br>
+    <label for="duration">Enter duration (minutes):</label><br>
+    <input type="text" th:field="*{duration}" id="duration"/>
+    <div th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">ERROR NAME</div><br><br>
+    <label for="price">Enter price (dollars):</label><br>
+    <input type="text" th:field="*{price}" id="price"/>
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR NAME</div><br><br>
+    <input class="inputClass" type="submit" value="Update"/>
+    <input class="backButton" type="button" value="Cancel" onclick="history.back()">
+</form>
+
+
+</body>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+</html>
